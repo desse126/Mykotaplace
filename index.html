@@ -4,7 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Kota Place — Treat Your Taste Buds</title>
-    <meta name="description" content="My Kota Place — the best kotas in Pretoria. Visit us at 129 Madiba Street, Foundation Building. Order now!">
+    <meta name="description" content="My Kota Place — the best kotas in Pretoria. Visit us at 129 Madiba Street, Foundation Building. Order via WhatsApp on 081 062 2982.">
+    <meta name="theme-color" content="#C62828">
+    <meta name="keywords" content="kota, kotas Pretoria, Madiba Street, takeaway Pretoria, fast food Pretoria, MyKotaPlace">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+
+    <!-- Open Graph / Social sharing -->
+    <meta property="og:title" content="My Kota Place — Pretoria's Finest Kotas">
+    <meta property="og:description" content="Kotas made with love, served with attitude. Visit 129 Madiba Street or order on WhatsApp 081 062 2982.">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:type" content="restaurant.restaurant">
+    <meta property="og:url" content="https://desse126.github.io/Mykotaplace/">
+    <meta property="og:site_name" content="My Kota Place">
+    <meta property="og:locale" content="en_ZA">
+
+    <!-- Twitter / WhatsApp link preview -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="My Kota Place — Pretoria's Finest Kotas">
+    <meta name="twitter:description" content="Kotas made with love, served with attitude.">
+    <meta name="twitter:image" content="logo.png">
+
+    <!-- Structured data for Google: shows hours, address, phone in search results -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "My Kota Place",
+      "description": "Pretoria's finest kotas — made fresh, served with attitude.",
+      "image": "https://desse126.github.io/Mykotaplace/logo.png",
+      "url": "https://desse126.github.io/Mykotaplace/",
+      "telephone": "+27810622982",
+      "servesCuisine": ["South African", "Kota", "Fast Food"],
+      "priceRange": "R",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "129 Madiba Street, Foundation Building",
+        "addressLocality": "Pretoria Central",
+        "addressRegion": "Gauteng",
+        "postalCode": "0002",
+        "addressCountry": "ZA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -25.7453649,
+        "longitude": 28.1846839
+      },
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "10:00",
+        "closes": "22:00"
+      }],
+      "acceptsReservations": false
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -411,6 +468,235 @@
             transform: translateY(0);
         }
 
+        /* ====== STICKY HEADER (appears on scroll) ====== */
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(249, 168, 37, 0.15);
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .sticky-header.visible {
+            transform: translateY(0);
+        }
+
+        .sticky-header .brand-row {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            min-width: 0;
+        }
+
+        .sticky-header img {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .sticky-header .brand-name {
+            font-family: 'Dela Gothic One', cursive;
+            color: var(--gold);
+            font-size: 0.95rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .sticky-header .btn {
+            padding: 0.55rem 1.1rem;
+            font-size: 0.85rem;
+        }
+
+        /* ====== HERO LOGO ====== */
+        .hero-logo {
+            width: clamp(140px, 25vw, 220px);
+            height: auto;
+            margin-bottom: 1.25rem;
+            filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.45));
+            animation: fadeDown 0.8s ease-out both;
+        }
+
+        /* "Made fresh" badge under tagline */
+        .hero-meta {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: -1rem 0 2rem;
+            animation: fadeUp 0.8s ease-out 0.5s both;
+        }
+
+        .hero-meta .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(249, 168, 37, 0.12);
+            color: var(--gold-light);
+            border: 1px solid rgba(249, 168, 37, 0.3);
+            padding: 0.4rem 0.95rem;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .hero-meta .pill .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--gold);
+            animation: pulse 1.6s ease-in-out infinite;
+        }
+
+        .hero-meta .pill.open .dot { background: #4ade80; box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6); }
+        .hero-meta .pill.open { color: #86efac; border-color: rgba(74, 222, 128, 0.35); background: rgba(74, 222, 128, 0.08); }
+        .hero-meta .pill.closed .dot { background: #f87171; animation: none; }
+        .hero-meta .pill.closed { color: #fca5a5; border-color: rgba(248, 113, 113, 0.35); background: rgba(248, 113, 113, 0.08); }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.85); }
+        }
+
+        /* ====== WHY US ====== */
+        .why-section {
+            background: var(--dark);
+            padding: 4rem 2rem;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .why-card {
+            background: linear-gradient(180deg, rgba(249, 168, 37, 0.04) 0%, transparent 100%);
+            border: 1px solid rgba(249, 168, 37, 0.15);
+            border-radius: 16px;
+            padding: 1.75rem 1.5rem;
+            text-align: center;
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .why-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(249, 168, 37, 0.35);
+        }
+
+        .why-card .why-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .why-card h4 {
+            font-family: 'Dela Gothic One', cursive;
+            color: var(--gold);
+            font-size: 1rem;
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.02em;
+        }
+
+        .why-card p {
+            color: var(--wood-light);
+            font-size: 0.88rem;
+            line-height: 1.45;
+        }
+
+        /* ====== POLISHED MENU ITEM ====== */
+        .menu-item {
+            position: relative;
+        }
+        .menu-item::after {
+            content: '';
+            position: absolute;
+            left: 0; top: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--gold);
+            opacity: 0;
+            border-radius: 2px;
+            transition: opacity 0.2s ease;
+        }
+        .menu-item:hover::after {
+            opacity: 1;
+        }
+        .menu-item:hover .menu-item-price {
+            color: var(--gold-light);
+            transform: scale(1.05);
+        }
+        .menu-item-price {
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        /* ====== FLOATING WHATSAPP BUTTON ====== */
+        .whatsapp-fab {
+            position: fixed;
+            bottom: 1.25rem;
+            right: 1.25rem;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45);
+            z-index: 90;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            animation: floatPulse 2.4s ease-in-out infinite;
+        }
+
+        .whatsapp-fab:hover {
+            transform: scale(1.08);
+            box-shadow: 0 6px 28px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-fab svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+
+        @keyframes floatPulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45), 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            50% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45), 0 0 0 14px rgba(37, 211, 102, 0); }
+        }
+
+        /* ====== FOOTER ENHANCEMENT ====== */
+        footer .footer-brand-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-bottom: 0.4rem;
+        }
+        footer .footer-brand-row img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+        footer .tagline {
+            color: var(--wood-light);
+            font-size: 0.8rem;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
         /* ====== RESPONSIVE ====== */
         @media (max-width: 600px) {
             section {
@@ -441,14 +727,31 @@
 </head>
 <body>
 
+    <!-- STICKY HEADER (appears on scroll) -->
+    <div class="sticky-header" id="stickyHeader" aria-hidden="true">
+        <a href="#" class="brand-row" style="text-decoration:none;">
+            <img src="logo.png" alt="My Kota Place">
+            <span class="brand-name">My Kota Place</span>
+        </a>
+        <a href="https://wa.me/27810622982?text=Hi%2C%20I'd%20like%20to%20place%20an%20order!" class="btn btn-whatsapp" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Order
+        </a>
+    </div>
+
     <!-- HERO -->
     <section class="hero">
         <div class="hero-badge">Pretoria's Finest</div>
+        <img src="logo.png" alt="My Kota Place — chicken mascot" class="hero-logo" width="220" height="220">
         <h1>
             MY KOTA<br>PLACE
             <span>Treat Your Taste Buds</span>
         </h1>
         <p class="hero-tagline">Kotas made with love, served with attitude.</p>
+        <div class="hero-meta">
+            <span class="pill" id="openStatus"><span class="dot"></span><span id="openStatusText">Checking hours…</span></span>
+            <span class="pill"><span class="dot"></span>Made fresh · ready in 15–20 min</span>
+        </div>
         <div class="hero-cta">
             <a href="#menu" class="btn btn-primary">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
@@ -461,19 +764,40 @@
         </div>
     </section>
 
+    <!-- WHY US -->
+    <section class="why-section">
+        <div class="why-grid">
+            <div class="why-card fade-in">
+                <div class="why-icon">🔥</div>
+                <h4>Made to order</h4>
+                <p>Every kota is built fresh when you order — never sitting around waiting.</p>
+            </div>
+            <div class="why-card fade-in">
+                <div class="why-icon">🚀</div>
+                <h4>Ready in 15 min</h4>
+                <p>Quick service for the lunchtime rush. WhatsApp ahead and skip the wait.</p>
+            </div>
+            <div class="why-card fade-in">
+                <div class="why-icon">💛</div>
+                <h4>Loved in Pretoria</h4>
+                <p>Right in the heart of the city, serving locals since day one.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- MENU -->
     <section class="menu-section" id="menu">
         <div class="container">
             <h2 class="section-title fade-in">Kota Menu</h2>
             <p class="section-subtitle fade-in">Freshly made, fully loaded</p>
 
-            <!-- Kota Menu -->
+            <!-- Signature Kotas (synced to POS) -->
             <div class="menu-category fade-in">
                 <h3>Signature Kotas</h3>
 
                 <div class="menu-item">
                     <div class="menu-item-info">
-                        <div class="menu-item-name">Fullhouse 25</div>
+                        <div class="menu-item-name">Fullhouse 15</div>
                         <div class="menu-item-desc">Lettuce, Polony, Special Sauce, Egg, Vienna &amp; Cheese</div>
                     </div>
                     <div class="menu-item-price">R 29.99</div>
@@ -489,7 +813,7 @@
 
                 <div class="menu-item">
                     <div class="menu-item-info">
-                        <div class="menu-item-name">Something Nyana</div>
+                        <div class="menu-item-name">Something Nyama</div>
                         <div class="menu-item-desc">Lettuce, Polony, Special Sauce, Egg or Vienna Cheese</div>
                     </div>
                     <div class="menu-item-price">R 24.99</div>
@@ -497,7 +821,7 @@
 
                 <div class="menu-item">
                     <div class="menu-item-info">
-                        <div class="menu-item-name">Better Days</div>
+                        <div class="menu-item-name">Better</div>
                         <div class="menu-item-desc">Lettuce, Polony, Special Sauce, Full Russian, Cheese or Egg</div>
                     </div>
                     <div class="menu-item-price">R 34.99</div>
@@ -508,27 +832,27 @@
                         <div class="menu-item-name">Bodese</div>
                         <div class="menu-item-desc">Lettuce, Polony, Special Sauce, 1/2 Russian or Burger, Egg, Cheese</div>
                     </div>
-                    <div class="menu-item-price">R 39.99</div>
+                    <div class="menu-item-price">R 34.99</div>
                 </div>
 
                 <div class="menu-item">
                     <div class="menu-item-info">
-                        <div class="menu-item-name">Big Boys &amp; Girls</div>
+                        <div class="menu-item-name">Big Boss</div>
                         <div class="menu-item-desc">Lettuce, Polony, Special Sauce, Russian, Cheese, Burger, Egg, Vienna</div>
                     </div>
                     <div class="menu-item-price">R 49.99</div>
                 </div>
             </div>
 
-            <!-- Create Your Own -->
+            <!-- Extras (synced to POS) -->
             <div class="menu-category fade-in">
-                <h3>Create Your Own Kota</h3>
+                <h3>Extras &amp; Sides</h3>
 
                 <div class="menu-item">
                     <div class="menu-item-info">
                         <div class="menu-item-name">Egg</div>
                     </div>
-                    <div class="menu-item-price">R 4.99</div>
+                    <div class="menu-item-price">R 6.99</div>
                 </div>
 
                 <div class="menu-item">
@@ -540,16 +864,16 @@
 
                 <div class="menu-item">
                     <div class="menu-item-info">
-                        <div class="menu-item-name">Russian (Small)</div>
+                        <div class="menu-item-name">Russian</div>
                     </div>
-                    <div class="menu-item-price">R 14.99</div>
+                    <div class="menu-item-price">R 9.99</div>
                 </div>
 
                 <div class="menu-item">
                     <div class="menu-item-info">
-                        <div class="menu-item-name">Russian (Long)</div>
+                        <div class="menu-item-name">Polcheese</div>
                     </div>
-                    <div class="menu-item-price">R 19.99</div>
+                    <div class="menu-item-price">R 9.99</div>
                 </div>
 
                 <div class="menu-item">
@@ -563,14 +887,14 @@
                     <div class="menu-item-info">
                         <div class="menu-item-name">Medium Chips</div>
                     </div>
-                    <div class="menu-item-price">R 24.99</div>
+                    <div class="menu-item-price">R 19.99</div>
                 </div>
 
                 <div class="menu-item">
                     <div class="menu-item-info">
                         <div class="menu-item-name">Large Chips</div>
                     </div>
-                    <div class="menu-item-price">R 34.99</div>
+                    <div class="menu-item-price">R 29.99</div>
                 </div>
             </div>
         </div>
@@ -624,12 +948,23 @@
 
     <!-- FOOTER -->
     <footer>
-        <p class="brand">My Kota Place</p>
-        <p>&copy; 2026 My Kota Place. All rights reserved.</p>
+        <div class="footer-brand-row">
+            <img src="logo.png" alt="My Kota Place">
+            <p class="brand">My Kota Place</p>
+        </div>
+        <p class="tagline">Treat your taste buds.</p>
+        <p>129 Madiba Street, Foundation Building · Pretoria · 081 062 2982</p>
+        <p style="margin-top:0.75rem;">&copy; 2026 My Kota Place. All rights reserved.</p>
     </footer>
 
-    <!-- SCROLL ANIMATIONS -->
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/27810622982?text=Hi%2C%20I'd%20like%20to%20place%20an%20order!" class="whatsapp-fab" target="_blank" rel="noopener" aria-label="Order on WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <!-- SCROLL ANIMATIONS + STICKY HEADER + OPEN/CLOSED INDICATOR -->
     <script>
+        // Fade-in on scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -639,6 +974,55 @@
         }, { threshold: 0.1 });
 
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Sticky header — appears once we scroll past the hero
+        const stickyHeader = document.getElementById('stickyHeader');
+        const heroSection = document.querySelector('.hero');
+        let lastScrollY = window.scrollY;
+        function updateStickyHeader() {
+            const heroBottom = heroSection ? heroSection.offsetTop + heroSection.offsetHeight - 100 : 600;
+            const scrolled = window.scrollY;
+            if (scrolled > heroBottom) {
+                stickyHeader.classList.add('visible');
+                stickyHeader.setAttribute('aria-hidden', 'false');
+            } else {
+                stickyHeader.classList.remove('visible');
+                stickyHeader.setAttribute('aria-hidden', 'true');
+            }
+            lastScrollY = scrolled;
+        }
+        window.addEventListener('scroll', updateStickyHeader, { passive: true });
+        updateStickyHeader();
+
+        // Live "open / closed" indicator — based on Africa/Johannesburg time
+        // Hours: Mon–Sun 10:00 – 22:00
+        function updateOpenStatus() {
+            const sastNow = new Date(new Date().toLocaleString('en-US', { timeZone: 'Africa/Johannesburg' }));
+            const hour = sastNow.getHours();
+            const minute = sastNow.getMinutes();
+            const totalMinutes = hour * 60 + minute;
+            const openTime = 10 * 60;     // 10:00
+            const closeTime = 22 * 60;    // 22:00
+            const isOpen = totalMinutes >= openTime && totalMinutes < closeTime;
+
+            const pill = document.getElementById('openStatus');
+            const text = document.getElementById('openStatusText');
+            if (!pill || !text) return;
+
+            pill.classList.remove('open', 'closed');
+            if (isOpen) {
+                pill.classList.add('open');
+                text.textContent = "We're open! Closing at 10pm";
+            } else {
+                pill.classList.add('closed');
+                text.textContent = totalMinutes < openTime
+                    ? `Closed — opens at 10am`
+                    : `Closed — opens tomorrow at 10am`;
+            }
+        }
+        updateOpenStatus();
+        // Refresh every minute so the status flips automatically
+        setInterval(updateOpenStatus, 60_000);
     </script>
 
 </body>
